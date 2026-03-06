@@ -59,7 +59,7 @@ GameFolder/                    <- RDR.exe, game/, update/, plugins/
 
 ## Running the Installer
 
-1. Make the script executable (if needed):
+1. Make the script executable:
 
    ```bash
    chmod +x "RR Beta 3.0 PC Installer.sh"
