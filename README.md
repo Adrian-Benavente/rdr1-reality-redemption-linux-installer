@@ -1,4 +1,4 @@
-# Reality Redemption BETA 3.0 PC Installer (Linux)
+# Reality Redemption BETA 3.0 Linux Installer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
