@@ -16,12 +16,12 @@ Auto-installer for the Reality Redemption mod for Red Dead Redemption on PC. Run
 
 ### Install by distro
 
-| Distro | Command |
-|--------|---------|
+| Distro        | Command                                   |
+| ------------- | ----------------------------------------- |
 | Ubuntu/Debian | `sudo apt install wine wine32 winetricks` |
-| Fedora | `sudo dnf install wine winetricks` |
-| Arch | `sudo pacman -S wine winetricks` |
-| openSUSE | `sudo zypper install wine winetricks` |
+| Fedora        | `sudo dnf install wine winetricks`        |
+| Arch          | `sudo pacman -S wine winetricks`          |
+| openSUSE      | `sudo zypper install wine winetricks`     |
 
 On Ubuntu/Debian, if `wine32` fails, first run: `sudo dpkg --add-architecture i386 && sudo apt update`
 
@@ -84,6 +84,12 @@ WINEDLLOVERRIDES="dinput8.dll=n,b" %command%
 
 Right-click the game in Steam → Properties → Launch Options, then paste the line above. This tells Wine/Proton to use the mod's ASI loader (dinput8.dll) instead of the built-in one.
 
+## Verifying the Installation
+
+If you see the **Reality Redemption** logo (BADASSBABOON PRESENTS REALITY REDEMPTION) when opening the in-game map, the mod was applied successfully.
+
+![Reality Redemption logo on the in-game map](assets/reality-redemption-map-logo.png)
+
 ## Installer Options
 
 - **[1] Install** – Full or manual installation of the mod
@@ -92,11 +98,11 @@ Right-click the game in Steam → Properties → Launch Options, then paste the 
 
 ## Troubleshooting
 
-| Error | Solution |
-|-------|----------|
-| `kernel32.dll` / `c0000135` | 32-bit Wine missing or corrupted prefix. Try: `rm -rf ~/.wine` (or `~/.wine-rr`), install wine/wine32 for your distro, then re-run with `WINEPREFIX=~/.wine-rr WINEARCH=win32`. |
-| `Wine Mono is not installed` | Install winetricks for your distro, then `WINEPREFIX=~/.wine-rr WINEARCH=win32 winetricks dotnet48`. Re-run the script with the same prefix. |
-| "Required game files cannot be found" | Ensure the Reality Redemption folder is inside the game directory and the script is run from inside the Reality Redemption folder. |
+| Error                                 | Solution                                                                                                                                                                        |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kernel32.dll` / `c0000135`           | 32-bit Wine missing or corrupted prefix. Try: `rm -rf ~/.wine` (or `~/.wine-rr`), install wine/wine32 for your distro, then re-run with `WINEPREFIX=~/.wine-rr WINEARCH=win32`. |
+| `Wine Mono is not installed`          | Install winetricks for your distro, then `WINEPREFIX=~/.wine-rr WINEARCH=win32 winetricks dotnet48`. Re-run the script with the same prefix.                                    |
+| "Required game files cannot be found" | Ensure the Reality Redemption folder is inside the game directory and the script is run from inside the Reality Redemption folder.                                              |
 
 ## Notes
 
