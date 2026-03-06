@@ -1,6 +1,8 @@
 # Reality Redemption BETA 3.0 Linux Installer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Linux](https://img.shields.io/badge/Linux-compatible-brightgreen)
+![Proton](https://img.shields.io/badge/Steam%20Proton-tested-blue)
 
 Auto-installer for the Reality Redemption mod for Red Dead Redemption on PC. Runs natively on Linux via bash and uses Wine to run MagicRDR.exe (a .NET tool that modifies game archives).
 
