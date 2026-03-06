@@ -230,7 +230,9 @@ install_reality_redemption() {
 
     echo "Installing Ultimate ASI Loader and copying the necessary game files into the update folder, might take a while..."
     cd "$SCRIPT_DIR" || exit
-    [[ -f "RR-Files/USL/dinput8.dll" ]] && cp -f "RR-Files/USL/dinput8.dll" "$GAME_DIR/" 2>/dev/null || true
+    if [[ -f "RR-Files/USL/dinput8.dll" ]]; then
+        cp -f "RR-Files/USL/dinput8.dll" "$GAME_DIR/" 2>/dev/null || true
+    fi
     mkdir -p "$GAME_DIR/plugins"
     mkdir -p "$GAME_DIR/update/game"
     mkdir -p "$GAME_DIR/update/game/redemption/territory_swall"
@@ -610,7 +612,9 @@ uninstall_manual() {
     if yesno_prompt "Uninstall HD loading screens? [Y/N]: "; then
         run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
         for i in $(seq 1 50); do
-            [[ -f "RR-Temp/mapres/ls_$i.wtd" ]] && mv -f "RR-Temp/mapres/ls_$i.wtd" "RR-Temp/mapres_loadingscreens/" 2>/dev/null || true
+            if [[ -f "RR-Temp/mapres/ls_$i.wtd" ]]; then
+                mv -f "RR-Temp/mapres/ls_$i.wtd" "RR-Temp/mapres_loadingscreens/" 2>/dev/null || true
+            fi
         done
         run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_loadingscreens" -current
     else
@@ -620,9 +624,13 @@ uninstall_manual() {
     if yesno_prompt "Uninstall HD lore-accurate minimap? [Y/N]: "; then
         run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
         for i in $(seq 1 108); do
-            [[ -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" ]] && mv -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+            if [[ -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" ]]; then
+                mv -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+            fi
         done
-        [[ -f "RR-Temp/mapres/lodstreamingmap.wtd" ]] && mv -f "RR-Temp/mapres/lodstreamingmap.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+        if [[ -f "RR-Temp/mapres/lodstreamingmap.wtd" ]]; then
+            mv -f "RR-Temp/mapres/lodstreamingmap.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+        fi
         run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_minimap" -current
     else
         echo "Skipping HD lore-accurate minimap..."
@@ -631,11 +639,15 @@ uninstall_manual() {
     if yesno_prompt "Uninstall HD game world textures? (ground, roads, trails, trees, cliffs, buildings, props, etc..) [Y/N]: "; then
         run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
         for f in RR-Temp/mapres/*_hilod.wtd RR-Temp/mapres/smic_*.wtd RR-Temp/mapres/terraintrails_*.wtd RR-Temp/mapres/ground_*.wtd RR-Temp/mapres/road_*.wtd RR-Temp/mapres/wet_*.wtd RR-Temp/mapres/rr_*.wtd; do
-            [[ -f "$f" ]] && mv -f "$f" "RR-Temp/mapres_terrain/" 2>/dev/null || true
+            if [[ -f "$f" ]]; then
+                mv -f "$f" "RR-Temp/mapres_terrain/" 2>/dev/null || true
+            fi
         done
         run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_terrain" -current
         for f in RR-Temp/mapres/smic_agaveviejo.wtd RR-Temp/mapres/smic_amb_gunbelt01_01.wtd RR-Temp/mapres/smic_armadillo.wtd RR-Temp/mapres/smic_chuparosa.wtd RR-Temp/mapres/smic_escalera.wtd RR-Temp/mapres/smic_fortdiego.wtd RR-Temp/mapres/smic_hennigans_ranch.wtd RR-Temp/mapres/smic_thieves_landing.wtd; do
-            [[ -f "$f" ]] && mv -f "$f" "RR-Temp/mapres_smics/" 2>/dev/null || true
+            if [[ -f "$f" ]]; then
+                mv -f "$f" "RR-Temp/mapres_smics/" 2>/dev/null || true
+            fi
         done
         run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_smics" -current
         run_magicrdr -extractfile "../game/fragments.rpf" root/fragments/st_fanpalm01x.wft "RR-Temp/fragments_vegetation/st_fanpalm01x.wft"
@@ -670,7 +682,9 @@ uninstall_manual() {
     if yesno_prompt "Uninstall HD John Marston textures? [Y/N]: "; then
         run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
         for f in RR-Temp/mapres/smic_player_*.wtd; do
-            [[ -f "$f" ]] && mv -f "$f" "RR-Temp/mapres_player/" 2>/dev/null || true
+            if [[ -f "$f" ]]; then
+                mv -f "$f" "RR-Temp/mapres_player/" 2>/dev/null || true
+            fi
         done
         run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_player" -current
     else
@@ -787,7 +801,9 @@ uninstall_automatic() {
 
     run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
     for i in $(seq 1 50); do
-        [[ -f "RR-Temp/mapres/ls_$i.wtd" ]] && mv -f "RR-Temp/mapres/ls_$i.wtd" "RR-Temp/mapres_loadingscreens/" 2>/dev/null || true
+        if [[ -f "RR-Temp/mapres/ls_$i.wtd" ]]; then
+            mv -f "RR-Temp/mapres/ls_$i.wtd" "RR-Temp/mapres_loadingscreens/" 2>/dev/null || true
+        fi
     done
     run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_loadingscreens" -current
     echo ""
@@ -795,20 +811,28 @@ uninstall_automatic() {
 
     run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
     for i in $(seq 1 108); do
-        [[ -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" ]] && mv -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+        if [[ -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" ]]; then
+            mv -f "RR-Temp/mapres/streaming_worldmap_$i.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+        fi
     done
-    [[ -f "RR-Temp/mapres/lodstreamingmap.wtd" ]] && mv -f "RR-Temp/mapres/lodstreamingmap.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+    if [[ -f "RR-Temp/mapres/lodstreamingmap.wtd" ]]; then
+        mv -f "RR-Temp/mapres/lodstreamingmap.wtd" "RR-Temp/mapres_minimap/" 2>/dev/null || true
+    fi
     run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_minimap" -current
     echo ""
     echo "Uninstalled HD lore-accurate minimap"
 
     run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
     for f in RR-Temp/mapres/*_hilod.wtd RR-Temp/mapres/smic_*.wtd RR-Temp/mapres/terraintrails_*.wtd RR-Temp/mapres/ground_*.wtd RR-Temp/mapres/road_*.wtd RR-Temp/mapres/wet_*.wtd RR-Temp/mapres/rr_*.wtd; do
-        [[ -f "$f" ]] && mv -f "$f" "RR-Temp/mapres_terrain/" 2>/dev/null || true
+        if [[ -f "$f" ]]; then
+            mv -f "$f" "RR-Temp/mapres_terrain/" 2>/dev/null || true
+        fi
     done
     run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_terrain" -current
     for f in RR-Temp/mapres/smic_agaveviejo.wtd RR-Temp/mapres/smic_armadillo.wtd RR-Temp/mapres/smic_chuparosa.wtd RR-Temp/mapres/smic_escalera.wtd RR-Temp/mapres/smic_fortdiego.wtd RR-Temp/mapres/smic_hennigans_ranch.wtd RR-Temp/mapres/smic_thieves_landing.wtd; do
-        [[ -f "$f" ]] && mv -f "$f" "RR-Temp/mapres_smics/" 2>/dev/null || true
+        if [[ -f "$f" ]]; then
+            mv -f "$f" "RR-Temp/mapres_smics/" 2>/dev/null || true
+        fi
     done
     run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_smics" -current
     run_magicrdr -extractfile "../game/fragments.rpf" root/fragments/st_fanpalm01x.wft "RR-Temp/fragments_vegetation/st_fanpalm01x.wft"
@@ -855,7 +879,9 @@ uninstall_automatic() {
 
     run_magicrdr -extractdir "../game/mapres.rpf" root/mapres "RR-Temp/mapres"
     for f in RR-Temp/mapres/smic_player_*.wtd; do
-        [[ -f "$f" ]] && mv -f "$f" "RR-Temp/mapres_player/" 2>/dev/null || true
+        if [[ -f "$f" ]]; then
+            mv -f "$f" "RR-Temp/mapres_player/" 2>/dev/null || true
+        fi
     done
     run_magicrdr -replace "../update/game/mapres.rpf" root/mapres "RR-Temp/mapres_player" -current
     echo ""
