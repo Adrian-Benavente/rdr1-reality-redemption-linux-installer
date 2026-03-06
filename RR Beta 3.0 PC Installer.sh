@@ -49,7 +49,7 @@ show_help() {
 # MagicRDR.exe must run via Wine - it modifies RPF archives
 # Wine inherits WINEPREFIX and WINEARCH from environment if set
 run_magicrdr() {
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
     if ! command -v wine &>/dev/null; then
         echo "Wine is not installed. Install it for your distro (e.g. apt/dnf/pacman/zypper). Run $0 --help for commands."
         exit 1
@@ -84,7 +84,7 @@ run_magicrdr() {
 
 yesno_prompt() {
     local prompt="$1"
-    read -p "$prompt" yesno
+    read -r -p "$prompt" yesno
     yesno=$(echo "$yesno" | tr '[:upper:]' '[:lower:]')
     [[ "$yesno" = "y" ]]
 }
@@ -118,7 +118,7 @@ missing_uninstall_files() {
 
 # Create RR-Temp directory structure for uninstall
 create_rr_temp_dirs() {
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
     mkdir -p RR-Temp/mapres RR-Temp/mapres_loadingscreens RR-Temp/mapres_minimap
     mkdir -p RR-Temp/mapres_terrain RR-Temp/mapres_smics RR-Temp/fragments_vegetation
     mkdir -p RR-Temp/territory_swall/armadillo/armadillo
@@ -191,7 +191,7 @@ main_menu() {
     echo "[3] Cancel and Exit"
     echo ""
     echo ""
-    read -n 1 -p "It's time to choose: " choice
+    read -r -n 1 -p "It's time to choose: " choice
     echo
     case "$choice" in
         1) install_reality_redemption ;;
@@ -229,7 +229,7 @@ install_reality_redemption() {
     done
 
     echo "Installing Ultimate ASI Loader and copying the necessary game files into the update folder, might take a while..."
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
     [[ -f "RR-Files/USL/dinput8.dll" ]] && cp -f "RR-Files/USL/dinput8.dll" "$GAME_DIR/" 2>/dev/null || true
     mkdir -p "$GAME_DIR/plugins"
     mkdir -p "$GAME_DIR/update/game"
@@ -274,7 +274,7 @@ install_reality_redemption() {
     echo "[3] Cancel and Exit"
     echo ""
     echo ""
-    read -n 1 -p "It's time to choose: " choice
+    read -r -n 1 -p "It's time to choose: " choice
     echo
     case "$choice" in
         1) install_automatic ;;
@@ -291,7 +291,7 @@ install_manual() {
     echo ""
     sleep 2
 
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
 
     if yesno_prompt "Install Fusion Mod? (Skip intro) [Y/N]: "; then
         cp -f "RR-Files/plugins/RedDeadRedemption.FusionMod.asi" "$GAME_DIR/plugins/" 2>/dev/null || true
@@ -432,7 +432,7 @@ install_automatic() {
     echo "The installation will take some time, please be patient..."
     sleep 2
 
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
     cp -f "RR-Files/plugins/RedDeadRedemption.FusionMod.asi" "$GAME_DIR/plugins/" 2>/dev/null || true
     cp -f "RR-Files/plugins/RedDeadRedemption.FusionMod.ini" "$GAME_DIR/plugins/" 2>/dev/null || true
     echo ""
@@ -580,7 +580,7 @@ uninstall_reality_redemption() {
     echo "[3] Cancel and Exit"
     echo ""
     echo ""
-    read -n 1 -p "It's time to choose: " choice
+    read -r -n 1 -p "It's time to choose: " choice
     echo
     case "$choice" in
         1) uninstall_automatic ;;
@@ -597,7 +597,7 @@ uninstall_manual() {
     echo ""
     sleep 2
 
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
 
     if yesno_prompt "Uninstall Fusion Mod? (Skip intro) [Y/N]: "; then
         rm -f "$GAME_DIR/plugins/RedDeadRedemption.FusionMod.asi" 2>/dev/null || true
@@ -779,7 +779,7 @@ uninstall_automatic() {
     echo "The uninstallation will take some time, please be patient..."
     sleep 2
 
-    cd "$SCRIPT_DIR"
+    cd "$SCRIPT_DIR" || exit
     rm -f "$GAME_DIR/plugins/RedDeadRedemption.FusionMod.asi" 2>/dev/null || true
     rm -f "$GAME_DIR/plugins/RedDeadRedemption.FusionMod.ini" 2>/dev/null || true
     echo ""
