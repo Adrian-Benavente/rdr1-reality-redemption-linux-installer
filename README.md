@@ -1,5 +1,7 @@
 # Reality Redemption BETA 3.0 PC Installer (Linux)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Auto-installer for the Reality Redemption mod for Red Dead Redemption on PC. Runs natively on Linux via bash and uses Wine to run MagicRDR.exe (a .NET tool that modifies game archives).
 
 ## Getting Started
@@ -109,3 +111,7 @@ If you see the **Reality Redemption** logo (BADASSBABOON PRESENTS REALITY REDEMP
 - **WINEPREFIX / WINEARCH**: If you use a custom prefix for setup, always use the same when running the script.
 - **Repeated runs**: No need to reinstall dotnet48 or delete the prefix; run the script as often as needed.
 - **Game**: Red Dead Redemption (PC).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
