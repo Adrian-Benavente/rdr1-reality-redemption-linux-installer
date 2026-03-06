@@ -4,6 +4,9 @@
 
 Auto-installer for the Reality Redemption mod for Red Dead Redemption on PC. Runs natively on Linux via bash and uses Wine to run MagicRDR.exe (a .NET tool that modifies game archives).
 
+This script is a Linux-friendly reimplementation of the original Windows
+`.bat` installer included in the mod, adapted to run with Bash + Wine.
+
 > **Disclaimer:** This script is intended only for the **Reality Redemption 3.0 beta** version of the mod. It may not work with other versions.
 >
 > This repository **does not distribute any files from the Reality Redemption mod**.
