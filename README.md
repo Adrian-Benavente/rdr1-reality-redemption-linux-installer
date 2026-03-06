@@ -9,12 +9,6 @@ Auto-installer for the Reality Redemption mod for Red Dead Redemption on PC. Run
 This script is a Linux-friendly reimplementation of the original Windows `.bat` installer included in the mod, adapted to run with Bash + Wine.
 
 > **Disclaimer:** This script is intended only for the **Reality Redemption 3.0 beta** version of the mod. It may not work with other versions.
->
-> This repository **does not distribute any files from the Reality Redemption mod**.
->
-> The script only automates the installation process on Linux by invoking the official tools included in the mod package.
->
-> All mod assets and files belong to their respective authors. Please download the mod from the official source: [Nexus Mods – Reality Redemption](https://www.nexusmods.com/reddeadredemption/mods/219)
 
 ## Getting Started
 
