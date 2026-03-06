@@ -127,3 +127,9 @@ If you see the **Reality Redemption** logo (BADASSBABOON PRESENTS REALITY REDEMP
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+This project **does not distribute any files from the Reality Redemption mod**.
+
+All mod assets belong to their respective authors.
+
+Please download the mod from its official source: [Nexus Mods – Reality Redemption](https://www.nexusmods.com/reddeadredemption/mods/219)
